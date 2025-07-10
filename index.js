@@ -296,8 +296,8 @@ var GameLogic = function() {
     this.gameState = 'playing';
     this.level = 1;
     this.keySpawned = false;
-    this.baseEnemyHealth = 50; // Базовое здоровье врагов
-    this.baseEnemiesCount = 10; // Базовое количество врагов
+    this.baseEnemyHealth = 50; 
+    this.baseEnemiesCount = 10; 
 };
 
 GameLogic.prototype = {
