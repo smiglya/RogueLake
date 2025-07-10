@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Рогалик - Пошаговая игра</title>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="game-container">
+        <h1>RogueLake</h1>
+
+        <div class="game-info">
+            <div class="level-info">Уровень: <span id="current-level">1</span></div>
+            <div class="player-stats">
+                <span id="player-health">HP: 100/100</span> |
+                <span id="player-attack">Атака: 10</span> |
+                <span id="player-swords">Мечи: 0</span> |
+                <span id="player-key">Ключ: Нет</span>
+            </div>
+        </div>
+
+        <div class="field-box">
+            <div class="field"></div>
+        </div>
+
+        <div class="controls">
+            <h3>Управление:</h3>
+            <p><strong>WASD</strong> - движение (W-вверх, A-влево, S-вниз, D-вправо)</p>
+            <p><strong>Пробел</strong> - атака всех соседних врагов</p>
+            <p><strong>Цель:</strong> Уничтожьте всех врагов, чтобы перейти на следующий уровень!</p>
+        </div>
+    </div>
+
+    <!-- Плашка проигрыша -->
+    <div class="game-over" id="game-over-modal">
+        <h2>Игра окончена!</h2>
+        <div id="game-over-stats"></div>
+        <button onclick="game.restart()">Попробовать снова</button>
+    </div>
+
+    <!-- Плашка завершения уровня -->
+    <div class="level-complete" id="level-complete-modal">
+        <h2>Уровень пройден!</h2>
+        <div id="level-complete-stats"></div>
+        <button onclick="game.nextLevel()">Следующий уровень</button>
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+        $(document).ready(function() {
+            try {
+                var game = new Game();
+                game.init();
+                window.game = game;
+            } catch (error) {
+                console.error('Ошибка при инициализации игры:', error);
+            }
+        });
+    </script>
+</body>
+
+</html>

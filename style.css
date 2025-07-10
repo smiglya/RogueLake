@@ -1,0 +1,230 @@
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Typography */
+h1, .controls h3 {
+    font-family: "Playfair Display";
+    text-align: center;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+h1 { font-size: 22px; }
+.controls h3 {
+    color: #00ff00;
+    font-size: 16px;
+}
+
+/* Game Layout */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100vw;
+    max-height: 100vh;
+    position: relative;
+}
+
+.game-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    position: relative;
+}
+
+/* Player Info */
+.level-info {
+    color: #00ff00;
+    font-weight: bold;
+    text-align: left;
+    flex: 0 0 auto;
+}
+
+.player-stats {
+    color: #ffff00;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+/* Game Field */
+.field-box {
+    border: 2px solid #d0d0d0;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+    position: relative;
+}
+
+.field {
+    position: relative;
+    background-color: #111;
+}
+
+/* Tiles Base Style */
+.field .tile {
+    position: absolute;
+    background-size: 100%;
+    background-image: url(images/tile-.png);
+    z-index: 5;
+}
+
+/* Tile Variants */
+.field .tileW { background-image: url(images/tile-W.png); }
+.field .tileE { 
+    background-image: url(images/tile-E.png);
+    z-index: 10;
+}
+.field .tileP { 
+    background-image: url(images/tile-P.png);
+    z-index: 10;
+}
+.field .tileHP {
+    background-image: url(images/tile-HP.png);
+    z-index: 9;
+}
+.field .tileSW {
+    background-image: url(images/tile-SW.png);
+    z-index: 9;
+}
+.field .tileD {
+    background-image: url(images/title-D.png);
+    z-index: 8;
+}
+.field .tileDL {
+    background-image: url(images/title-DL.png);
+    z-index: 8;
+}
+.field .tileK {
+    background-image: url(images/title-K.png);
+    z-index: 9;
+}
+
+/* Health Bars */
+.field .tile .health {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 11;
+    background-color: #ff0000;
+}
+
+.field .tileP .health {
+    background-color: #00ff00;
+}
+
+/* Controls */
+.controls {
+    margin-top: 4px;
+    text-align: center;
+    max-width: 1200px;
+}
+
+.controls p {
+    margin: 3px 0;
+    color: #cccccc;
+    font-size: 12px;
+}
+
+/* Modal Base Styles */
+.game-over, .level-complete {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    text-align: center;
+    z-index: 1000;
+    display: none;
+}
+
+.game-over { border: 3px solid #ff0000; }
+.level-complete { border: 3px solid #00ff00; }
+
+.game-over h2 { color: #ff0000; }
+.level-complete h2 { color: #00ff00; }
+
+/* Modal Buttons */
+.game-over button, .level-complete button {
+    background-color: #333;
+    border: 2px solid #666;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.game-over button:hover {
+    background-color: #ff0000;
+    border-color: #ff0000;
+}
+
+.level-complete button:hover {
+    background-color: #00ff00;
+    border-color: #00ff00;
+    color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 850px) {
+    h1 { font-size: 18px; }
+    .game-info, .player-stats { font-size: 14px; }
+    .game-info { max-width: 920px; }
+}
+
+@media (max-width: 650px) {
+    h1 { font-size: 16px; }
+    .game-info {
+        font-size: 12px;
+        max-width: 600px;
+    }
+    .player-stats {
+        font-size: 12px;
+        position: static;
+        transform: none;
+        margin-top: 5px;
+        width: 100%;
+    }
+    .level-info {
+        width: 100%;
+        text-align: center;
+    }
+    .controls {
+        max-width: 600px;
+    }
+    .controls h3 { font-size: 14px; }
+    .controls p { font-size: 10px; }
+}
